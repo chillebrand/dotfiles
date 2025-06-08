@@ -1,0 +1,80 @@
+" Base Settings
+" ========================================================
+set scrolloff=5
+set visualbell
+set showmode
+set showcmd
+set clipboard+=unnamed
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+let mapleader = " "
+
+" Plugin Settings
+" ========================================================
+set nerdtree
+set commentary " gcc
+set highlightedyank
+
+" Key mappings
+" ========================================================
+map Q gq
+
+"" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Tab navigation
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
+
+" Leader commands
+" ========================================================
+map <leader>e :NERDTreeToggle<CR>
+
+" Window splits
+nnoremap <leader>wv :action MoveTabRight<CR>
+nnoremap <leader>wo :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <leader>wx :action Unsplit<CR>
+
+" File navigation
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fg :action Find<CR>
+nnoremap <leader>fs :action FindInPath<CR>
+
+" Editor navigation
+nnoremap <leader>qq :action CloseContent<CR>
+nnoremap <leader>qa :action CloseAllEditorsButActive<CR>
+
+" Refactoring
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>rr :action RenameElement<CR>
+
+" Go to
+nnoremap <leader>gf :action Forward<CR>
+nnoremap <leader>gb :action Back<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gu :action ShowUsages<CR>
+
+" Debugging
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+
+" Code
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>ce :action ShowErrorDescription<CR>
+
+" Git
+nnoremap <leader>gs :action Vcs.Show.Local.Changes<CR>
+
+" Terminal
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
+" AI
+nnoremap <Leader>ai :action ActivateAIAssistantToolWindow<CR>
