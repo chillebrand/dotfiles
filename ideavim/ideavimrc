@@ -4,6 +4,7 @@ set scrolloff=5
 set visualbell
 set showmode
 set showcmd
+set relativenumber
 set clipboard+=unnamed
 
 set incsearch
@@ -33,34 +34,52 @@ nnoremap <C-l> <C-w>l
 nnoremap H :action PreviousTab<CR>
 nnoremap L :action NextTab<CR>
 
+" Method navigation
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+vnoremap J :action MoveLineDown<CR>
+vnoremap K :action MoveLineUp<CR>
+
+" Popup navigation
+inoremap <C-j> :action PopupMenu-selectNext<CR>
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
 " Leader commands
 " ========================================================
+" q to close file tree
 map <leader>e :NERDTreeToggle<CR>
 
 " Window splits
-nnoremap <leader>wv :action MoveTabRight<CR>
+nnoremap <leader>wv :action SplitVertically<CR>
 nnoremap <leader>wo :action MoveEditorToOppositeTabGroup<CR>
 nnoremap <leader>wx :action Unsplit<CR>
 
 " File navigation
 nnoremap <leader>ff :action GotoFile<CR>
-nnoremap <leader>fg :action Find<CR>
-nnoremap <leader>fs :action FindInPath<CR>
+nnoremap <leader>fg :action FindInPath<CR>
+nnoremap <leader>fr :action RecentFiles<CR>
+nmap <leader><leader> <Action>(RecentFiles)
 
 " Editor navigation
 nnoremap <leader>qq :action CloseContent<CR>
 nnoremap <leader>qa :action CloseAllEditorsButActive<CR>
+nmap <leader>z <Action>(HideAllWindows)
 
 " Refactoring
 nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>rr :action RenameElement<CR>
 
 " Go to
-nnoremap <leader>gf :action Forward<CR>
-nnoremap <leader>gb :action Back<CR>
-nnoremap <leader>gd :action GotoDeclaration<CR>
-nnoremap <leader>gi :action GotoImplementation<CR>
-nnoremap <leader>gu :action ShowUsages<CR>
+nmap <leader>gf <Action>(Forward)
+nmap <leader>gb <Action>(Back)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(ShowUsages)
+nmap gt <Action>(GotoTypeDeclaration)
 
 " Debugging
 nnoremap <leader>db :action ToggleLineBreakpoint<CR>
@@ -77,4 +96,18 @@ nnoremap <leader>gs :action Vcs.Show.Local.Changes<CR>
 nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
 " AI
-nnoremap <Leader>ai :action ActivateAIAssistantToolWindow<CR>
+nmap <leader>ai <Action>(ActivateAIAssistantToolWindow)
+nmap <leader>aa <Action>(AIIntentionsActionGroup)
+
+" Bookmarks
+nmap <leader>ba <Action>(ShowBookmarks)
+nmap <leader>b0 <Action>(ToggleBookmark0)
+nmap <leader>b1 <Action>(ToggleBookmark1)
+nmap <leader>b2 <Action>(ToggleBookmark2)
+nmap <leader>b3 <Action>(ToggleBookmark3)
+nmap <leader>b4 <Action>(ToggleBookmark4)
+nmap <leader>0 <Action>(GotoBookmark0)
+nmap <leader>1 <Action>(GotoBookmark1)
+nmap <leader>2 <Action>(GotoBookmark2)
+nmap <leader>3 <Action>(GotoBookmark3)
+nmap <leader>4 <Action>(GotoBookmark4)
